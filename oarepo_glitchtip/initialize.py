@@ -43,6 +43,7 @@ def initialize_glitchtip(
         # and we need to remove these records after 12-18 months to comply with CESNET
         # data retention policy
         send_default_pii=True,
+        traces_sample_rate=float(os.environ.get("INVENIO_GLITCHTIP_SAMPLE_RATE", "0.5")),
     )
 
     if deployment_version is None:
