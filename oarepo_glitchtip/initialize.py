@@ -58,6 +58,9 @@ def initialize_glitchtip(
         traces_sample_rate=float(
             os.environ.get("INVENIO_GLITCHTIP_SAMPLE_RATE", "0.5")
         ),
+        attach_stacktrace=True,
+        include_local_variables=True,
+        include_source_context=True,
     )
 
     if deployment_version is None:
