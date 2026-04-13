@@ -55,7 +55,8 @@ jobs:
 
       - name: Build package to publish
         run: |
-          .venv-tests/bin/python setup.py sdist bdist_wheel
+          .venv-tests/bin/pip install build
+          .venv-tests/bin/python -m build --wheel --sdist
 
       - name: Freeze packages
         run: |

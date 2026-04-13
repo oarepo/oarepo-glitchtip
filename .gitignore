@@ -95,3 +95,5 @@ node_modules
 .venv-builder/
 
 forked_install.sh
+
+uv.lock
