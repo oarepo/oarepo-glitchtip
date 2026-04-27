@@ -13,7 +13,7 @@ authors = [
     { name = "Mirek Simek", email = "miroslav.simek@cesnet.cz" }
 ]
 dependencies = [
-    "sentry-sdk[flask]",
+    "sentry-sdk[flask]>=2.35,<3",
 ]
 
 [project.entry-points."invenio_base.apps"]
