@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PYTHON="${PYTHON:-python3.12}"
-OAREPO_VERSION="${OAREPO_VERSION:-12}"
+PYTHON="${PYTHON:-python3.14}"
+OAREPO_VERSION="${OAREPO_VERSION:-14}"
 TESTS_VENV=.venv-tests
 
 if test -d $TESTS_VENV ; then
@@ -13,9 +13,10 @@ $PYTHON -m venv $TESTS_VENV
 
 pip install -U setuptools pip wheel
 pip install "oarepo[tests]==${OAREPO_VERSION}.*"
-pip install -e .
+pip install -e .[tests]
 
 (
     find oarepo_glitchtip -name '*.py' | grep -v '-' | tr '/' '.' | sed 's/\.__init__\.py//' | sed 's/\.py$//' | sed 's/^/import /'
 ) > $TESTS_VENV/all_imports.py
 python $TESTS_VENV/all_imports.py
+pytest tests

@@ -53,7 +53,6 @@ def initialize_glitchtip(
         # send details about current user. Note: glitchtip should be run on-premises
         # and we need to remove these records after 12-18 months to comply with CESNET
         # data retention policy
-        enable_logs=True,
         send_default_pii=True,
         traces_sample_rate=float(
             os.environ.get("INVENIO_GLITCHTIP_SAMPLE_RATE", "0.5")
