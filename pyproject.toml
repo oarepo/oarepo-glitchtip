@@ -39,7 +39,7 @@ include = [
 
 [project.optional-dependencies]
 tests = [
-    "pytest>=9.0.3",
+    "pytest",
     "celery",
     "sqlalchemy",
     "redis"

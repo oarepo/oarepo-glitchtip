@@ -55,21 +55,12 @@ jobs:
 
       - name: Build package to publish
         run: |
-          .venv-tests/bin/pip install build
-          .venv-tests/bin/python -m build --wheel --sdist
-
-      - name: Freeze packages
-        run: |
-          .venv-tests/bin/pip freeze > requirements.txt
+          python -m venv .venv
+          .venv/bin/pip install build
+          .venv/bin/python -m build --wheel --sdist
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
-
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: requirements.txt
-          path: requirements.txt
