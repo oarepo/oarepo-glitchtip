@@ -74,6 +74,9 @@ example/data
 .DS_Store
 
 test-model
+junit.xml
+coverage.xml
+.coverage
 
 # Testing
 sample/
@@ -106,3 +109,4 @@ uv.lock
 .eslintrc.yaml
 .mypy.ini
 .ruff.toml
+
