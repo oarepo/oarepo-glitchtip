@@ -15,7 +15,7 @@ authors = [
 dependencies = [
     "oarepo[rdm,tests]>=14.0.0dev0,<15.0.0",
     "flask-login>=0.6.3,<1.0.0",
-    "sentry-sdk[flask]>=1.0.0,<2",
+     "sentry-sdk[flask]>=2.35.0,<3.0.0",
 ]
 
 [project.entry-points."invenio_base.apps"]
