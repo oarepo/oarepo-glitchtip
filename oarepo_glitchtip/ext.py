@@ -1,10 +1,6 @@
-#
-# Copyright (C) 2024 CESNET z.s.p.o.
-#
-# oarepo-glitchtip is free software; you can redistribute it and/or
-# modify it under the terms of the MIT License; see LICENSE file for more
-# details.
-#
+# SPDX-FileCopyrightText: 2024 CESNET z.s.p.o
+# SPDX-License-Identifier: MIT
+
 """Glitchtip extension for OARepo."""
 
 from __future__ import annotations
@@ -16,7 +12,6 @@ import sentry_sdk
 from flask_login import current_user
 
 if TYPE_CHECKING:
-    from invenio_accounts.models import User
     from invenio_files_rest.app import Flask
 
 log = logging.getLogger(__name__)
@@ -25,8 +20,9 @@ log = logging.getLogger(__name__)
 class OARepoGlitchtipExt:
     """Glitchtip extension for OARepo."""
 
-    def __init__(self, app: Flask = None, **kwargs: Any) -> None:
+    def __init__(self, app: Flask | None = None, **kwargs: Any) -> None:
         """Initialize extension."""
+        _ = kwargs
         self.app = app
         if app is not None:
             self.init_app(app)
@@ -55,7 +51,7 @@ def add_user_to_glitchtip() -> None:
                 }
             )
         else:
-            u: User = current_user
+            u = current_user
             sentry_sdk.set_user(
                 {
                     "id": u.id,

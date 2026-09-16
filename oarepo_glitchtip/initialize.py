@@ -1,10 +1,6 @@
-#
-# Copyright (C) 2024 CESNET z.s.p.o.
-#
-# oarepo-glitchtip is free software; you can redistribute it and/or
-# modify it under the terms of the MIT License; see LICENSE file for more
-# details.
-#
+# SPDX-FileCopyrightText: 2024 CESNET z.s.p.o
+# SPDX-License-Identifier: MIT
+
 """Glitchtip initialization.
 
 The initialize_glitchtip function must be called as the first statement in the `invenio.cfg`.
@@ -15,6 +11,8 @@ initialize_glitchtip()
 
 <rest of file>
 """
+
+from __future__ import annotations
 
 import logging
 import os
@@ -27,9 +25,7 @@ from sentry_sdk.integrations.redis import RedisIntegration
 from sentry_sdk.integrations.sqlalchemy import SqlalchemyIntegration
 
 
-def initialize_glitchtip(
-    dsn: str | None = None, deployment_version: str | None = None
-) -> None:
+def initialize_glitchtip(dsn: str | None = None, deployment_version: str | None = None) -> None:
     """Initialize glitchtip.
 
     :param dsn: Sentry DSN. If not passed, it is taken from INVENIO_GLITCHTIP_DSN environment variable.
@@ -54,9 +50,7 @@ def initialize_glitchtip(
         # and we need to remove these records after 12-18 months to comply with CESNET
         # data retention policy
         send_default_pii=True,
-        traces_sample_rate=float(
-            os.environ.get("INVENIO_GLITCHTIP_SAMPLE_RATE", "0.5")
-        ),
+        traces_sample_rate=float(os.environ.get("INVENIO_GLITCHTIP_SAMPLE_RATE", "0.5")),
         attach_stacktrace=True,
         include_local_variables=True,
         include_source_context=True,
