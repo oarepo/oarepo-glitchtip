@@ -97,3 +97,12 @@ node_modules
 forked_install.sh
 
 uv.lock
+
+#
+# OARepo specific gitignore
+#
+.runner.sh
+.env-services
+.eslintrc.yaml
+.mypy.ini
+.ruff.toml
